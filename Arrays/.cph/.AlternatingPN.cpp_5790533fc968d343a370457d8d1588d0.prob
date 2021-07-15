@@ -1,0 +1,1 @@
+{"name":"Local: AlternatingPN","url":"d:\\VSCode\\DSA\\Arrays\\AlternatingPN.cpp","tests":[{"id":1626152192792,"input":"1\n1 -2 5 7 -2","output":"-2 1 02 5 7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\VSCode\\DSA\\Arrays\\AlternatingPN.cpp","group":"local","local":true}
