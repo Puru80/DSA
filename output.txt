@@ -1,4 +1,2 @@
-act cat tac 
-god dog 
-no on 
-is 
+ab
+aba
