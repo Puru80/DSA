@@ -3,7 +3,7 @@ package LinkedLists;
 import java.util.*;
 import java.io.*;
 
-public class RemoveLoop
+public class StartOfLoop
 {
     public static PrintWriter pw ;
 
@@ -53,7 +53,7 @@ public class RemoveLoop
         }
     }
 
-    static Node head;
+    // static Node head;
     
     static class Node
     {
@@ -64,24 +64,19 @@ public class RemoveLoop
             data = key;
             next = null;
         }
-    }
-    
-    static void push(int data){
-        Node node_new = new Node(data);
-        node_new.next = null;
-    
-        if(head == null)
-            head = node_new;
-        else{
-            Node last = head;
-            while (last.next != null) {
-                last = last.next;
-            }
-            last.next = node_new;
+        public Node() {
         }
-    
     }
-    
+
+    static void printList(Node head){
+        Node node = head;
+        while(node != null){
+            pw.print(node.data + " ");
+            node = node.next;
+        }
+        pw.println();
+    }
+
     public static void makeLoop(Node head, int x){
         if (x == 0)
             return;
@@ -100,75 +95,20 @@ public class RemoveLoop
         last.next = curr;
     }
     
-    /* public static boolean detectLoop(Node head){
-        Node hare = head.next;
-        Node tortoise = head;
-        while( hare != tortoise )
-        {
-            if(hare==null || hare.next==null) return false;
-            hare = hare.next.next;
-            tortoise = tortoise.next;
-        }
-        return true;
-    }
-
-    static int detectAndRemoveLoop(Node node)
-    {
-        Node slow = node, fast = node;
-        while (slow != null && fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-
-            // If slow and fast meet at same point then loop is present
-            if (slow == fast) {
-                removeLoop(slow, node);
-                return 1;
-            }
-        }
-        return 0;
-    } */
-
-    static void detectAndRemoveLoop(Node head){
-        if(head == null || head.next == null)        
-            return;
-        
-        Node fast = head, slow=head;
-
-        slow = slow.next;
-        fast = fast.next.next;
-
-        while(fast != null && fast.next != null){
-            if(slow == fast)
+    static Node detectLoop(Node head){
+        Node temp = new Node();
+        while(head!=null){
+            if(head.next == null)
+                return null;
+            if(head.next == temp)
                 break;
             
-            fast = fast.next.next;
-            slow = slow.next;
+            Node nex = head.next;
+            head.next = temp;
+            head = nex;
         }
 
-        if(slow == fast){
-            slow = head;
-            if(slow != fast){
-                while(slow.next != fast.next){
-                    slow = slow.next;
-                    fast = fast.next;
-                }
-                fast.next = null;
-            }
-            else{
-                while(fast.next != slow)
-                    fast = fast.next;
-                fast.next = null;
-            }
-        }
-    }
-    
-    static void printList(Node head){
-        Node node = head;
-        while(node != null){
-            pw.print(node.data + " ");
-            node = node.next;
-        }
-        pw.println();
+        return head;
     }
 
     public static void main(String[] args) throws Exception
@@ -191,13 +131,14 @@ public class RemoveLoop
                 curr = curr.next;
             }
 
-            printList(head);
-
             makeLoop(head, k);
 
-            detectAndRemoveLoop(head);
-            printList(head);
-            // pw.println(detectLoop(head));
+            Node res = detectLoop(head);
+            if(res == null)
+                pw.println("Loop does not exist");
+            else
+                pw.println("Starting node is: " + res.data);
+
         }
         
         pw.flush();
