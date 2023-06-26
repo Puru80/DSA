@@ -13,7 +13,7 @@ public class UniqueRowBMatrix {
 
         public FastReader() throws FileNotFoundException {
             br = new BufferedReader(
-                    new FileReader("/Users/puruagarwal/dev/java/DSA/output.txt"));
+                    new FileReader("/Users/puruagarwal/dev/java/DSA/input.txt"));
         }
 
         String next() {
