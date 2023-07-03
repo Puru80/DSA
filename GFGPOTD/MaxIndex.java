@@ -52,9 +52,9 @@ public class MaxIndex {
 
     static int maxIndexDiff(int arr[], int n) {
         // code here
+        int[] minArr = new int[n];
+        int[] maxArr = new int[n];
 
-        int minArr[] = new int[n];
-        int maxArr[] = new int[n];
 
         minArr[0] = arr[0];
         maxArr[n - 1] = arr[n - 1];
@@ -67,10 +67,11 @@ public class MaxIndex {
 
         while (i < n && j < n) {
             if (minArr[i] <= maxArr[j]) {
-                maxIndex = Math.max(maxIndex, j - 1);
+                maxIndex = Math.max(maxIndex, j - i);
                 j++;
-            } else
+            } else {
                 i++;
+            }
         }
 
         return maxIndex;
