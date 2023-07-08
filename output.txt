@@ -1,5 +1,8 @@
+true
+n: 2
+result: 1
 false
-true
-true
+n: 1
+result: 0
 false
 true
