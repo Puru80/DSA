@@ -51,8 +51,8 @@ public class IsSubsequence {
     }
 
     public static boolean isSubsequence(String s, String t) {
-        int l = t.length();
-        int r = s.length();
+        int l = s.length();
+        int r = t.length();
         int k = 0;
 
         if (r == 0)
@@ -64,9 +64,8 @@ public class IsSubsequence {
             if (s.charAt(k) == t.charAt(i)) {
                 if (k == l - 1)
                     return true;
+                k++;
             }
-
-            k++;
         }
 
         return false;
