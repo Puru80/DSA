@@ -3,7 +3,7 @@ package LeetCode75;
 import java.util.*;
 import java.io.*;
 
-public class IsSubsequence {
+public class MaxArea {
 
     public static PrintWriter pw;
 
@@ -50,37 +50,37 @@ public class IsSubsequence {
         }
     }
 
-    public static boolean isSubsequence(String s, String t) {
-        int l = s.length();
-        int r = t.length();
-        int k = 0;
+    public static int maxArea(int[] height) {
+        int n = height.length;
+        int left = 0;
+        int right = n - 1;
+        int maxArea = 0;
 
-        if (l == 0)
-            return true;
-        if (l > r)
-            return false;
+        while (left < right) {
+            int h = Math.min(height[left], height[right]);
+            int w = right - left;
+            int area = h * w;
+            maxArea = Math.max(maxArea, area);
 
-        for (int i = 0; i < r; i++) {
-            if (s.charAt(k) == t.charAt(i)) {
-                if (k == l - 1)
-                    return true;
-                k++;
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
             }
         }
 
-        return false;
+        return maxArea;
     }
 
     public static void main(String[] args) throws Exception {
         FastReader input = new FastReader();
         pw = new PrintWriter(new BufferedWriter(new FileWriter("../DSA/output.txt")));
-        int t = input.nextInt();     
+        int t = input.nextInt();
 
         while (t-- > 0) {
-            String s = input.nextLine();
-            String k = input.nextLine();
-
-            pw.println(isSubsequence(s, k));
+            int[] height = Arrays.stream(input.nextLine().split(" ")).mapToInt(s -> Integer.parseInt(s))
+                    .toArray();
+            pw.println(maxArea(height));
         }
 
         pw.flush();
