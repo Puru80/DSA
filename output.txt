@@ -1,3 +1,2 @@
-n: 34
-SubString: ibpbhixfiouhdljnjfflpapptrxgcomvn
-7
+6
+10

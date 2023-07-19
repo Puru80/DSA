@@ -1,9 +1,5 @@
-1
-ibpbhixfiouhdljnjfflpapptrxgcomvnb
-33
-abciiidef
-3
-aeiou
 2
-leetcode
+1 1 1 0 0 0 1 1 1 1 0
+2
+0 0 1 1 0 0 1 1 1 0 1 1 0 0 0 1 1 1 1
 3
