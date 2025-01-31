@@ -3,7 +3,7 @@ package Striver;
 import java.util.*;
 import java.io.*;
 
-public class IinertionSort {
+public class InsertionSort {
 
     public static PrintWriter pw;
 
