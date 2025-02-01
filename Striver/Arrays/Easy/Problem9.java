@@ -3,7 +3,7 @@ package Striver.Arrays.Easy;
 import java.util.*;
 import java.io.*;
 
-public class Problem8 {
+public class Problem9 {
 
     public static PrintWriter pw;
 
@@ -50,36 +50,17 @@ public class Problem8 {
         }
     }
 
-    public static ArrayList<Integer> findUnion(int a[], int b[]) {
-        // add your code here
-        int i = 0, j = 0;
-        ArrayList<Integer> res = new ArrayList<>();
+    public static int missingNumber(int[] nums) {
+        int n = nums.length;
 
-        while (i < a.length && j < b.length) {
-            if (a[i] < b[j]) {
-                if (res.size() == 0 || res.get(res.size() - 1) != a[i])
-                    res.add(a[i]);
-                i++;
-            } else {
-                if (res.size() == 0 || res.get(res.size() - 1) != b[j])
-                    res.add(b[j]);
-                j++;
-            }
+        int sum = (n*(n+1))/2;
+
+        int arrSum = 0;
+        for(int i=0;i<n;i++){
+            arrSum += nums[i];
         }
 
-        while(i < a.length){
-            if (res.get(res.size() - 1) != a[i])
-                res.add(a[i]);
-            i++;
-        }
-
-        while(j < b.length){
-            if (res.get(res.size() - 1) != b[j])
-                res.add(b[j]);
-            j++;
-        }
-
-        return res;
+        return sum - arrSum;
     }
 
     public static void main(String[] args) throws Exception {
@@ -88,18 +69,10 @@ public class Problem8 {
         int t = input.nextInt();
 
         while (t-- > 0) {
-            int[] a = Arrays.stream(input.nextLine().split(" ")).mapToInt(s -> Integer.parseInt(s))
+            int arr[] = Arrays.stream(input.nextLine().split(" ")).mapToInt(s -> Integer.parseInt(s))
                     .toArray();
-            int[] b = Arrays.stream(input.nextLine().split(" ")).mapToInt(s -> Integer.parseInt(s))
-                    .toArray();
-
-            ArrayList<Integer> res = findUnion(a, b);
-            for(int i: res){
-                pw.print(i + " ");
-            }
-
-            pw.println();
-        }
+            pw.println(missingNumber(arr));
+;        }
 
         pw.flush();
     }
